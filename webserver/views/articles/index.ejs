@@ -1,0 +1,36 @@
+<% layout("../layouts/logged_in_layout") -%>
+<div class="page-header">
+<h2>Content</h2>
+</div>
+<p><a href="/cms/articles/choosecontent" class="btn btn-primary">Create Content</a><a href="/cms/articles/importcontent" class="btn btn-primary" style="margin-left:20px;">Import Content</a></p>
+<table class="table table-hover table-striped">
+    <tr>
+        <th>Name</th>
+        <th>Alias</th>
+        <th>Id</th>
+        <th>Type</th>
+        <th>Template</th>
+        <th>Remove</th>
+        <th>Preview</th>
+    </tr>
+    <% 
+    articles.forEach(function(article) { %>
+        
+            <tr id="<%- article.alias %>">
+                <td><a href="/cms/articles/edit/<%- article.alias %>"><%- article.name %></a></td>
+                <td><%- article.alias %></td>
+                <td><%- article._id %></td>
+                <td><%- article.type %></td>
+                <td><%- article.template %></td>
+                <td>
+                     <form 
+                        action="/cms/articles/delete/<%- article.cat %>/<%- article.type %>/<%- article.template?article.template:article.type %>/<%- article._id %>" 
+                        method="get"
+                        onsubmit="return confirm('Do you really want to delete this article?');" >
+                        <button type="submit" class="btn btn-danger btn-xs">Delete</button>
+                    </form> 
+                </td> 
+                <td><a href="/cms/articles/preview/<%= article.alias%>">View</a></td>
+            </tr>
+    <% }); %> 
+</table>

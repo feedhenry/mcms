@@ -1,0 +1,21 @@
+<script type="text/javascript">
+    tinymce.init({
+        height:600,
+        menubar:"edit insert view format table tools",
+        visual:false,
+        selector: "textarea.editor",
+        plugins: [
+            "advlist anchor autolink charmap code contextmenu fullpage fullscreen hr image insertdatetime lists link media paste preview searchreplace table textcolor visualblocks"
+        ],
+        image_advtab: true,
+        toolbar: "undo redo | fontselect fontsizeselect styleselect forecolor backcolor | bold italic underline | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image anchor | fullpage",
+        image_list:[{
+            "title":"ky",
+            "value":"http://keyangxiang.com/index.html"
+        }]
+    });
+</script>
+
+<div class="form-group">
+    <textarea class="editor" name="content"><%= ((typeof article != 'undefined') && (article.content != null)) ? article.content : '' %></textarea>
+</div>

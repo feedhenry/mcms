@@ -1,0 +1,21 @@
+<% layout("../layouts/logged_in_layout") -%>
+<% script("/js/apps.js") -%>
+<div class="page-header">
+<h2><%= title %></h2>
+</div>
+<div class="form-group">
+        <button  type="button" class="app_index_create_btn btn btn-primary">New App</button>
+</div>
+<div class="clearfix panel panel-primary">
+    <div class="panel-heading"><h3 class="panel-title">Applications</h3></div>
+    <div class="panel-body">
+    <div id="app_index_browser_panel_wrapper">
+        <small>Use right click on node to open tool menu.</small>
+        <div id="app_index_browser_panel"></div>
+    </div>
+    <div id="app_index_editor_panel">
+        <%- partial("../partials/appEditorInit") %>
+    </div>
+    </div>
+    
+</div>

@@ -1,0 +1,123 @@
+<% layout("../layouts/logged_in_layout") -%>
+<style>
+#preview_panel{
+    position:fixed;
+    right:10px;
+    top:100px;
+    background: white;
+    z-index:1001;
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
+    border:1px solid #ccc;
+    -webkit-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    -ms-transition: all 0.5s ease;
+    -o-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+    -webkit-box-shadow:   2px 2px 3px 1px rgba(0, 0, 0, 0.5);
+    box-shadow:   2px 2px 3px 1px rgba(0, 0, 0, 0.5);
+}
+#create_container{
+    position: relative;
+}
+#preview_iframe{
+    width: 100%;
+    height:100%;
+    border: none;
+}
+#preview_contener{
+    width:320px;
+    height:480px;
+    overflow: hidden;
+}
+#preview_icon{
+    position: absolute;
+    left:-50px;
+    top:0;
+    cursor:pointer;
+}
+#preview_toolbar{
+    border-bottom:1px solid #efefef;
+    padding: 10px;
+}
+#preview_header{
+    height:44px;
+    background: #1e5799; /* Old browsers */
+    background: -moz-linear-gradient(top,  #1e5799 0%, #2989d8 50%, #207cca 51%, #7db9e8 100%); /* FF3.6+ */
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#1e5799), color-stop(50%,#2989d8), color-stop(51%,#207cca), color-stop(100%,#7db9e8)); /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(top,  #1e5799 0%,#2989d8 50%,#207cca 51%,#7db9e8 100%); /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(top,  #1e5799 0%,#2989d8 50%,#207cca 51%,#7db9e8 100%); /* Opera 11.10+ */
+    background: -ms-linear-gradient(top,  #1e5799 0%,#2989d8 50%,#207cca 51%,#7db9e8 100%); /* IE10+ */
+    background: linear-gradient(to bottom,  #1e5799 0%,#2989d8 50%,#207cca 51%,#7db9e8 100%); /* W3C */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#1e5799', endColorstr='#7db9e8',GradientType=0 ); /* IE6-9 */
+    text-align: center;
+}
+#preview_name{
+    line-height: 2.0em;
+    color: white;
+    
+    font-size:1.5em;
+}
+#preview_body_wrapper{
+    overflow: auto;
+    width:100%;
+    height:436px;
+}
+</style>
+<script src="/js/preview.js"></script>
+<script type="text/javascript">
+    $(function(){
+        var preview_hidden=false;
+        $("#preview_icon").click(_togglePreview);
+        function _togglePreview(){
+            var width=$("#preview_panel").width();
+            if (preview_hidden){
+                $("#preview_panel").css("right","10px");
+                preview_hidden=false;
+                preview.startTimer();
+            }else{
+                $("#preview_panel").css("right","-"+width+"px");
+                preview_hidden=true;
+                preview.stopTimer();
+            }
+        }
+        setTimeout(_togglePreview,300);
+        preview.startTimer();
+       
+    });
+</script>
+<div class="clearfix" id="create_container">
+    <form id="article_create_form"
+        action="/cms/articles/save/<%= cat%>/<%= type%>/<%= template%>"
+        method="post">
+        <%- partial("../partials/contentMeta.ejs") %>
+        <div class="form_panel" >
+            <h4><%= title %></h4>
+            <% if (showMeta){ %>
+                <%- partial("../partials/articleFormFields") %>
+            <% }%>
+            <%- partial("./createForms/create_"+cat+"_"+name.toLowerCase()) %>
+            <fieldset>
+                 <button type="submit" class="btn btn-primary">Save</button>
+            </fieldset>
+        </div>
+    </form>
+    <div id="preview_panel">
+        <div id="preview_icon" title="Preview"><img src="/img/preview-icon.png" width="50"/></div>
+        <div id="preview_toolbar">
+            <p>Preview Tool</p>
+            <div class="form-group">
+                <label>Screen Size</label>
+                <select class="form-control">
+                    <option>320*480</option>
+                </select>
+            </div>
+        </div>
+        <div id="preview_contener">
+            <div id="preview_header"><span id="preview_name"></span></div>
+            <div id="preview_body_wrapper">
+             <%- partial("./preview/preview_"+cat+"_"+name.toLowerCase()) %>
+            </div>
+        </div>
+    </div>
+</div>

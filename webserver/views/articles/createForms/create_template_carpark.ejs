@@ -1,0 +1,35 @@
+<% layout("../layouts/logged_in_layout") -%>
+
+<form id="article_create_form" action="/cms/articles/save" method="post">
+    <div class="form_panel">
+        <h4>New Airline Article</h4>
+        <div style="width:500px; ">
+            <div class="form-group">
+                <label for="alias">Alias</label>
+                <input class="form-control" name="alias" type="text" required value="<%= (typeof article != 'undefined') ? article.alias : '' %>" />
+            </div>
+            <div class="form-group">
+                <label for="name">Name</label>
+                <input class="form-control" name="name" type="text" required value="<%= (typeof article != 'undefined') ? article.name : '' %>" />
+            </div> 
+            <div class="form-group">
+                <label for="name">Status</label>
+                <input class="form-control" name="status" type="text" required value="<%= (typeof article != 'undefined') ? article.status : '' %>" />
+            </div> 
+            <div id="article_version_field">
+                <label for="version">Version</label>
+                <input class="form-control" name="version" type="text" disabled value="<%= (typeof article != 'undefined') ? article.version : '' %>"/>
+            </div>     
+            <div class="form-group">
+                <label for="publish">Publish</label>
+                <select class="form-control" name="publish">
+                    <option value="true" <%= (typeof article != 'undefined' && article.publish === "true") ? 'selected' : '' %>>yes</option>
+                    <option value="false" <%= (typeof article != 'undefined' && article.publish === "false") ? 'selected' : '' %>>no</option>
+                    </select>
+            </div>
+        </div>
+        <fieldset>
+             <button type="submit" class="btn btn-primary">Save</button>
+        </fieldset>
+    </div>
+</form>

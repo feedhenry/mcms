@@ -1,0 +1,22 @@
+<div class="form-group">
+    <label for="alias">Alias</label>
+    <input class="form-control" name="alias" type="text" required value="<%= (typeof category != 'undefined') ? category.alias : '' %>" />
+</div>
+<div class="form-group">
+    <label for="name">Name</label>
+    <input class="form-control" name="name" type="text" required value="<%= (typeof category != 'undefined') ? category.name : '' %>"/>
+</div>
+<div id="category_version_field">
+    <label for="version">Version</label>
+    <input class="form-control" name="version" type="text" disabled value="<%= (typeof category != 'undefined') ? category.version : '' %>"/>
+</div>      
+<div class="form-group">
+    <label for="publish">Publish</label>
+    <select name="publish" class="form-control">
+        <option value="true" <%= (typeof category != 'undefined' && category.publish === "true") ? 'selected' : '' %>>yes</option>
+        <option value="false" <%= (typeof category != 'undefined' && category.publish === "false") ? 'selected' : '' %>>no</option>
+    </select>
+</div>
+<div>
+    <input name="version" type="hidden" value="<%= (typeof category != 'undefined') ? category.version : '' %>"/>
+</div>

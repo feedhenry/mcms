@@ -1,0 +1,13 @@
+module.exports={
+    "core":{
+        "html":require("./html.js"),
+        "json":require("./json.js")
+    },
+    "template":{
+        "airline":require("./airline.js"),
+        "shop":require("./shop.js")
+    }
+}
+exports.json=require("./json.js");
+exports.airlineItem=require("./airline.js");
+exports.shop=require("./shop.js");

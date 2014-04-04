@@ -1,0 +1,79 @@
+<!-- #previewTemplateHolder has html template / renderPreview(data) -->
+<script src="/js/templ.js"></script>
+<script type="text/javascript">
+function renderPreview(obj){
+  if ($("#previewTemplateHolder").length===0){
+    alert("Preview template not found. Please define a HTML template first.");
+  }else{
+    var html=$("#previewTemplateHolder").val();
+    var renderedHtml=tmpl(html,obj);
+    $("#previewWindow").contents().find("body").css("max-width","304px");
+    $("#previewWindow").contents().find("body").html(renderedHtml);
+    
+  }
+  
+}
+var layouts={
+  "none":{
+    "iframe":{
+      "top":"129px",
+      "width":"320px",
+      "height":"480px",
+      "left":"40px"
+    }
+  },
+  "ios1":{
+    "title":{
+      "background":"/img/ios1.png"
+    }
+  }
+}
+var titleHeight=44;
+</script>
+<style>
+.previewContainer{
+  position: relative;
+}
+.previewContainer iframe{
+  position: absolute;
+  top:129px;
+  width:320px;
+  height:480px;
+  left:40px;
+  
+}
+</style>
+
+<%
+  if (typeof article =="undefined" ||  !article.previewTemplate || article.previewTemplate==""){
+    %>
+      <b>Cannot find preview template. Please set preview template first.</b>
+    <%
+  }else{
+    %>
+    <input type="hidden" id="previewTemplateHolder" value="<%= article.previewTemplate%>"/>
+    <div class="previewContainer" >
+      <img src="/img/iphone_wireframe.png"/>
+      <iframe frameBorder="0" id="previewWindow">
+        <html>
+          <head>
+            <style type="text/css">
+              body{
+                margin:0;
+                padding:0;
+              }
+            </style>
+          </head>
+        </html>
+      </iframe>
+    </div>
+    <div class="form-group">
+      <label>Layout</label>
+      <select class="form-control">
+        <option val="none">None</option>
+      </select>
+    </div>
+    <%
+  }
+
+%>

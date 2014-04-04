@@ -1,0 +1,228 @@
+body {
+    width: 100%;    
+    margin: auto;
+    -webkit-font-smoothing:antialiased;
+}
+
+#header{
+    height:75px;
+    background:#313131;
+    padding:15px;
+    -webkit-box-shadow:  0px 2px  8px 1px rgba(0, 0, 0, 1);
+    box-shadow:  0px 2px  8px 1px rgba(0, 0, 0, 1);
+    position:absolute;
+    z-index:1001;
+    left:0;
+    top:0;
+    right:0;
+}
+#header span{
+    font-size:2em;
+    color:white;
+}
+#header small{
+    font-size:1.5em;
+    color:#ccc;
+    margin-left:10px;
+}
+#mainBody{
+    margin-top:78px;
+}
+footer p {
+    color: #fff;
+    font-size: 10px;
+    font-weight: bold;
+}
+
+a {
+    color: #2e2e2e;
+    text-decoration: none;
+}
+
+a:hover {
+    color: #000;
+}
+
+section {
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+/*form {
+    float: left;
+    width: 98%;
+    padding: 1% 0;
+}*/
+
+.full_form {
+    width: 500px;
+    margin: 20px auto;
+    padding: 1%;
+    padding:50px;
+    padding-left:100px;
+    padding-right:100px;
+    border:1px solid #ccc;
+    -webkit-border-radius: 10px;
+    border-radius: 10px;
+    background:#efefef;
+}
+
+form h2 {
+    width: 96%;
+    margin-left: 2%;
+}
+
+.form_panel {
+    width: 100%;
+    margin: auto;
+}
+
+fieldset {
+    float: left;
+    width: 100%;
+    border: none;
+}
+
+/*label {
+    float: left;
+    width: 45%;
+}
+
+input, select {
+    float: right;
+    width: 45%;
+}
+
+button {
+    float: right;
+    padding: 10px;
+}*/
+
+/*table {
+    float: left;
+    width: 100%;
+    color: #2e2e2e;
+    background: #fff;
+    border: solid 1px #000;
+}
+
+table th {
+    text-align: left;
+}*/
+
+.hidden {
+    display: none;
+}
+
+#navigation {
+    float: left;
+    width: 100%;
+    margin-bottom: 10px;
+    background: #c9c9c9;
+}
+
+#navigation ul {
+    float: left;
+    margin: 10px 0;
+    padding: 0;
+    list-style-type: none;
+}
+
+#navigation ul li {
+    float: left;
+    margin: 0 5px;
+    padding: 0;
+    font-size: 20px;
+    text-transform: capitalize;
+}
+
+#navigation ul li a {
+    color: #2e2e2e;
+    text-decoration: none;
+}
+#menuBar ul li.active a{
+    -webkit-box-shadow: inset 0px 0px  10px 0px rgba(0, 0, 0, 0.2);
+    box-shadow: inset 0px 0px  10px 0px rgba(0, 0, 0, 0.2);
+    text-shadow: 0px -1px 0px #ffffff;
+        
+}
+#navigation ul li a:hover {
+    color: #000;
+}
+
+#logout_form {
+    float: right;
+    width: 500px;
+    margin: 0;
+    padding: 0;
+    background: transparent;
+}
+
+#logout_form p {
+    float: right;
+    text-transform: capitalize;
+}
+
+#logout_form button {
+    float: right;
+    margin: 10px;
+}
+
+
+
+
+#app_index_browser_panel_wrapper {
+    float: left;
+    width: 30%;
+    padding: 1%;
+    background: #fff;
+    color: #000;
+    
+}
+
+#app_index_browser_panel ul li[rel="application"] {
+    min-height: 10px;
+}
+
+#app_index_browser_panel ul li[rel="application"] > a {
+    font-weight: bold;
+}
+
+#app_index_browser_panel ul li[rel="application"] > a .jstree-icon {
+    width: 10px;
+    height: 14px;
+    background:url("../img/app_icon.png") center center no-repeat !important; 
+}
+
+#app_index_browser_panel ul li[rel="category"] > a .jstree-icon {
+    width: 14px;
+    height: 14px;
+    background:url("../img/category_icon.png") center center no-repeat !important; 
+}
+
+#app_index_browser_panel ul li[rel="article"] > a .jstree-icon {
+    width: 14px;
+    height: 14px;
+    background:url("../img/article_icon.png") center center no-repeat !important; 
+}
+
+#app_index_editor_panel {
+    float: right;
+    width: 64%;
+    min-height: 200px;
+    padding: 1%;
+    padding-left: 15px;
+    background: #fff;
+    color: #000;
+    border-left:1px solid #ccc;
+}
+#content_container{
+    padding:15px;
+    padding-top:0;
+}
+input[class="form-control"][name="alias"] {
+    display: inline;
+    width: 80%;
+    margin-right: 1em;
+    max-width: 350px;
+}

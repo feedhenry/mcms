@@ -1,0 +1,21 @@
+<%- layout("../layouts/logged_in_layout") %>
+<style>
+#form_panel{
+    width:52%;
+}
+
+</style>
+<script>
+$(function(){
+    $("#weburl").on("change",function(){
+        var url=$(this).val();
+        $("#preview_frame").attr("src",url);
+    });
+});
+
+</script>
+    <div class="form-group">
+        <label>WebPage URL</label>
+        <input type="text" name="url" class="form-control" id="weburl" value="<%= ((typeof article != 'undefined') && (article.url != null)) ? article.url : ''%> "/>
+    </div>
+

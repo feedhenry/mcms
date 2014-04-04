@@ -1,0 +1,7 @@
+<form id="app_edit_form">
+    <h3>Edit Application</h3>
+    <%- partial("../partials/appFormFields") %>
+    <fieldset>
+         <button class="btn btn-primary" type="button" id="app_edit_form_save_btn" data-alias="<%= (typeof application != 'undefined') ? application.alias : '' %>">Save</button>
+    </fieldset>
+</form>

@@ -1,0 +1,28 @@
+<% layout("../layouts/logged_in_layout") -%>
+<form id="users_edit_form"
+    class="full_form"
+    action="/cms/users/<%= user.username %>/save"
+    method="post">
+     <div class="form_panel">
+        <h2><%= title %> <%= user.name %></h2>
+        <fieldset>
+            <label for="name">Name</label>
+            <input name="name" type="text" required value="<%= user.name %>" />
+        </fieldset> 
+        <fieldset>
+            <label for="email">Email</label>
+            <input name="email" type="text" required value="<%= user.email %>"/>
+        </fieldset>  
+        <fieldset>
+            <label for="username">Username</label>
+            <input name="username" type="text"  required value="<%= user.username %>"/>
+        </fieldset>   
+        <fieldset>
+            <label for="password">Password</label>
+            <input name="password" type="password" required value="<%= user.password %>" />
+        </fieldset>
+        <fieldset>
+             <button type="submit">Save</button>
+        </fieldset>
+    </div>
+</form>

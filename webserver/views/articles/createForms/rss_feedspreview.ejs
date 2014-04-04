@@ -1,0 +1,85 @@
+<script>
+var loadExtraUrl="/cms/articles/loadExtra/import/json/rss/:extraId";
+var curPage=1;
+var totalPage=null;
+var itemPerPage=10;
+$(document).ready(function(){
+  totalPage=Math.ceil($("#feedsTable tr.contentTr").length/itemPerPage);
+  displayPage();
+  $("#nextPage").on("click",function(){
+    curPage++;
+    displayPage();
+  });
+  $("#prevPage").on("click",function(){
+    curPage--;
+    displayPage();
+  });
+  $("#feedsTable tr.contentTr").on("click",function(){
+    var tr=$(this);
+    var extraId=tr.data().id;
+    var finalUrl=loadExtraUrl.replace(":extraId",extraId);
+    $.get(finalUrl,function(res){
+      renderPreview(res);
+    });
+  });
+});
+function displayPage(){
+  if (curPage>totalPage){
+    curPage=totalPage;
+  }
+  if (curPage<1){
+    curPage=1;
+  }
+  var startPos=(curPage-1)*itemPerPage;
+  var trs=$("#feedsTable tr.contentTr");
+  trs.hide();
+  for (var i=0;i<itemPerPage;i++){
+    var tr=trs[startPos+i];
+    if (tr){
+      $(tr).fadeIn();  
+    }
+    
+  }
+}
+</script>
+<style type="text/css">
+  #feedsTable tr.contentTr{
+    display: none;
+    cursor: pointer;
+  }
+  #feedsTable td{
+    overflow-x:hidden;
+    text-overflow:ellipsis;
+    white-space:nowrap; 
+    max-width: 350px;
+  }
+</style>
+<h3>Feeds &amp; Preview</h3>
+<table style="width:100%">
+  <tr>
+    <td style="min-width:400px"><%- partial("./embed_preview.ejs") %></td>
+    <td>
+        <table class="table table-striped table-hover" id="feedsTable">
+            <tr>
+                <th>Title</th>
+                <th>Published Date</th>
+            </tr>
+            <% 
+              if (typeof article !="undefined" && article.content && article.content.length>0){
+                  for (var i=0;i<article.content.length;i++){
+                    var content=article.content[i];
+                    %>
+                      <tr class="contentTr" data-id="<%= content._id%>">
+                          <td><%= content.title%></td>
+                          <td><%= content.pubdate%></td>
+                      </tr>
+                    <%
+                  }
+              }
+            %>
+        </table>
+        <div><button type="button" id="prevPage">Prev</button><button type="button" id="nextPage">Next</button></div>
+    </td>
+    
+  </tr>
+</table>

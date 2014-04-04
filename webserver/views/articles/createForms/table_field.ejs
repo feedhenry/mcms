@@ -1,0 +1,155 @@
+<script type="text/javascript">
+$(document).on("click",".delete_field",function(){
+    var ts=$(this).data().ts;
+    $("#rft").val(ts);
+    $("#article_create_form").submit();
+});
+$(document).on("click",".edit_field",function(){
+    
+    var ts=$(this).data().ts;
+    var curTr=$(this).parents("tr");
+    editRow(curTr);
+    showBtnGroup("editField",ts);
+    // var ts=$(this).data().ts;
+    // showBtnGroup("editField",ts);
+});
+$(document).on("click",".edit_field_ok",function(){
+    var ts=$(this).data().ts;
+    $("#eft").val(ts);
+    $("#article_create_form").submit();
+});
+$(document).on("click",".addFieldBtn",function(){
+    $("#af").val(true);
+    $("#article_create_form").submit();
+});
+var ascend=false;
+$(document).on("click","table th",function(){
+    ascend=!ascend;
+    var th=$(this);
+    var table=$(this).parents("table");
+    var ths=table.find("th");
+    var index=Array.prototype.indexOf.call(ths,th[0]);
+    var trs=table.find("tr");
+    var th=Array.prototype.shift.call(trs);//remove table header
+    var tf=Array.prototype.pop.call(trs);//remove table header
+    Array.prototype.sort.call(trs,function(a,b){
+        
+        var tra=$(a);
+        var trb=$(b);
+        var tda=$(tra.find("td")[index]);
+        var tdb=$(trb.find("td")[index]);
+        var vala=tda.children("input").val();
+        var valb=tdb.children("input").val();
+
+        if (tra.hasClass("editTr")){
+            return -1;
+        }
+        if (trb.hasClass("editTr")){
+            return 1;
+        }
+        if (vala > valb){
+            if (ascend){
+                return 1;    
+            }else{
+                return -1;
+            }
+            
+        }else if (vala <valb){
+            if (ascend){
+                return -1;    
+            }else{
+                return 1;
+            }
+        }else{
+            return 1;
+        }
+    });
+    
+    Array.prototype.unshift.call(trs,th);
+    Array.prototype.push.call(trs,tf);
+    table.html(trs);
+});
+function showBtnGroup(groupName,ts){
+    // debugger;
+    $(".btnGroup.active[data-ts=\""+ts+"\"] ").removeClass("active");
+    if (typeof groupName == "object"){
+        groupName.addClass("active");
+    }else{
+        $(".btnGroup."+groupName+"[data-ts=\""+ts+"\"] ").addClass("active");    
+    }
+    
+}
+</script>
+<style>
+#fields{
+    padding:8px;
+    margin-right:10px;
+    border-right:1px solid #efefef;
+}
+.btnGroup{
+    display: none;
+}
+.btnGroup.active{
+    display: block;
+}
+table th{
+    cursor:pointer;
+}
+</style>
+<div  id="fields">
+
+    <h3>Table Fields</h3>
+            <input type="hidden" name="remove_field_timestamp" id="rft" />
+            <input type="hidden" name="remove_content_timestamp" id="rct" />
+            <input type="hidden" name="edit_content_timestamp" id="ect" />
+            <input type="hidden" name="edit_field_timestamp" id="eft" />
+            <input type="hidden" name="add_content" id="ac" />
+            <input type="hidden" name="add_field" id="af" />
+        <table data-type="fields" class="table table-strip table-hover" style="margin-top:20px;">
+            <tr>
+                <th style="width:50%">Field Name</th>
+                <th>Type</th>
+                <th></th>
+            </tr>
+            <%
+                if (article && article.tableMeta){
+                    var tableMeta=article.tableMeta;
+                    for (var key in tableMeta){
+                        var item=tableMeta[key];
+                        %>
+                            <tr>
+                                <td>
+                                    <input type="hidden" value="<%= item.props.name %>"/>
+                                    <%= item.props.name %>
+                                </td>
+                                <td>
+                                    <input type="hidden" value="<%= item.props.fieldType %>"/>
+                                    <%= item.props.fieldType %>
+                                </td>
+                                <td class="btnTr">
+                                    <div class="btnGroup main active" data-ts="<%= key%>">
+                                        <button data-ts="<%= key%>" type="button" class="btn btn-primary btn-xs edit_field" >Edit</button><button data-ts="<%= key%>" type="button" class="btn btn-danger btn-xs delete_field" >Delete</button>
+                                    </div>
+                                    <div class="btnGroup editField" data-ts="<%= key%>">
+                                        <button data-ts="<%= key%>" class="btn btn-primary btn-xs edit_field_ok" type="button">Save</button><button data-ts="<%= key%>" class="btn btn-primary btn-xs edit_cancel" type="button">Cancel</button>
+                                    </div>
+                                </td>
+                            </tr>
+                        <%
+                    };    
+                }
+                
+            %>
+            <tr class="editTr">
+                <td><input class="form-control" type="text" name="field_name" placeholder="Enter field name"/></td>
+                <td>
+                    <select class="form-control" name="field_type">
+                        <option value="text">Text</option>
+                        <option value="image">Image</option>
+                        <option value="formattedtext">Rich Text</option>
+                    </select>
+                </td>
+                <td><button type="button" class="btn  btn-primary btn-xs addFieldBtn ">Add</button></td>
+            </tr>
+        </table>
+        </div>

@@ -1,0 +1,7 @@
+<form id="article_edit_form">
+    <h2>Edit Article</h2>
+    <%- partial("../partials/articleFormFields") %>
+    <fieldset>
+         <button type="button" id="article_edit_form_save_btn" data-alias="<%= (typeof article != 'undefined') ? article.alias : '' %>">Save</button>
+    </fieldset>
+</form>

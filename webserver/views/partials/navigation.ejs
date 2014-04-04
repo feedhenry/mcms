@@ -1,0 +1,26 @@
+<div id="menuBar" class="navbar navbar-default">
+    <ul class="nav navbar-nav">
+        <li id="menu_dashboard"><a href="/cms/dashboard">Dashboard</a></li>
+        <li id="menu_users"><a href="/cms/users">Users</a></li>
+        <li id="menu_categories"><a href="/cms/categories">Categories</a></li>
+        <li id="menu_articles"><a href="/cms/articles">Content</a></li>
+        <li id="menu_apps"><a href="/cms/apps">Apps</a></li>
+    </ul>
+    
+    <a href="/cms/logout" class="btn btn-default navbar-btn navbar-right">Logout</a>
+    <div class="navbar-text pull-right">
+        Sign in as <%= sessionUser.name %> 
+    </div>
+</div>
+<script>
+    $(function(){
+        var routes=window.location.toString().split("/");
+        var activeId="menu_"+routes[routes.length-1];
+        try{
+            $("#"+activeId).addClass("active");
+        }catch(e){
+            //hmm...
+        }
+        
+    });
+</script>

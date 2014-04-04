@@ -1,0 +1,45 @@
+2013-09-10T08:55:44.918Z - [32minfo[39m: DB is ready. Start to initialise web server.
+2013-09-10T08:55:45.238Z - [32minfo[39m: CMS is ready.
+2013-09-10T08:55:45.240Z - [32minfo[39m: App started
+{ email: 'test@test.com', password: 'test' }
+2013-09-10T09:54:36.791Z - [32minfo[39m: Convert http://keyangxiang.com/images/logo.png to inline image
+2013-09-10T09:54:37.128Z - [32minfo[39m: Image conerting:http://keyangxiang.com/images/logo.png succeed
+2013-09-10T10:00:23.236Z - [35msilly[39m: Branch structure:{"cat_5224ae8ec61db2f404000006":{"art_522891efd878b23406000002":"mydemoshop","art_52289284d878b23406000003":"shop1","art_5229b3bb91df2e1402000001":"mynewhtml","art_5229b54e91df2e1402000003":"shop12","art_5229df7791df2e1402000004":"mytestArticle","art_5224ad81c61db2f404000005":"AppInfo","art_5224b6f4c61db2f404000009":"fdsafs","art_522db0089f87bc1f05000001":"kidskindom","cat_521f76cf4597bd6cfa81ad75":{"art_5224ad81c61db2f404000005":"AppInfo","art_5224b6f4c61db2f404000009":"fdsafs","art_52260f570b9a7d7a13000001":"fdafs"}},"cat_5224ad56c61db2f404000004":{}}
+2013-09-10T10:00:23.237Z - [35msilly[39m: Process Branch:cat_5224ae8ec61db2f404000006: {"art_522891efd878b23406000002":"mydemoshop","art_52289284d878b23406000003":"shop1","art_5229b3bb91df2e1402000001":"mynewhtml","art_5229b54e91df2e1402000003":"shop12","art_5229df7791df2e1402000004":"mytestArticle","art_5224ad81c61db2f404000005":"AppInfo","art_5224b6f4c61db2f404000009":"fdsafs","art_522db0089f87bc1f05000001":"kidskindom","cat_521f76cf4597bd6cfa81ad75":{"art_5224ad81c61db2f404000005":"AppInfo","art_5224b6f4c61db2f404000009":"fdsafs","art_52260f570b9a7d7a13000001":"fdafs"}}
+2013-09-10T10:00:23.237Z - [35msilly[39m: Branch structure:{"art_522891efd878b23406000002":"mydemoshop","art_52289284d878b23406000003":"shop1","art_5229b3bb91df2e1402000001":"mynewhtml","art_5229b54e91df2e1402000003":"shop12","art_5229df7791df2e1402000004":"mytestArticle","art_5224ad81c61db2f404000005":"AppInfo","art_5224b6f4c61db2f404000009":"fdsafs","art_522db0089f87bc1f05000001":"kidskindom","cat_521f76cf4597bd6cfa81ad75":{"art_5224ad81c61db2f404000005":"AppInfo","art_5224b6f4c61db2f404000009":"fdsafs","art_52260f570b9a7d7a13000001":"fdafs"}}
+2013-09-10T10:00:23.237Z - [35msilly[39m: Process Branch:art_522891efd878b23406000002: "mydemoshop"
+2013-09-10T10:00:23.238Z - [35msilly[39m: Process Branch:art_52289284d878b23406000003: "shop1"
+2013-09-10T10:00:23.240Z - [35msilly[39m: Process Branch:art_5229b3bb91df2e1402000001: "mynewhtml"
+2013-09-10T10:00:23.241Z - [35msilly[39m: Process Branch:art_5229b54e91df2e1402000003: "shop12"
+2013-09-10T10:00:23.242Z - [35msilly[39m: Process Branch:art_5229df7791df2e1402000004: "mytestArticle"
+2013-09-10T10:00:23.242Z - [35msilly[39m: Process Branch:art_5224ad81c61db2f404000005: "AppInfo"
+2013-09-10T10:00:23.243Z - [35msilly[39m: Process Branch:art_5224b6f4c61db2f404000009: "fdsafs"
+2013-09-10T10:00:23.243Z - [35msilly[39m: Process Branch:art_522db0089f87bc1f05000001: "kidskindom"
+2013-09-10T10:00:23.243Z - [35msilly[39m: Process Branch:cat_521f76cf4597bd6cfa81ad75: {"art_5224ad81c61db2f404000005":"AppInfo","art_5224b6f4c61db2f404000009":"fdsafs","art_52260f570b9a7d7a13000001":"fdafs"}
+2013-09-10T10:00:23.243Z - [35msilly[39m: Branch structure:{"art_5224ad81c61db2f404000005":"AppInfo","art_5224b6f4c61db2f404000009":"fdsafs","art_52260f570b9a7d7a13000001":"fdafs"}
+2013-09-10T10:00:23.243Z - [35msilly[39m: Process Branch:art_5224ad81c61db2f404000005: "AppInfo"
+2013-09-10T10:00:23.244Z - [35msilly[39m: Process Branch:art_5224b6f4c61db2f404000009: "fdsafs"
+2013-09-10T10:00:23.244Z - [35msilly[39m: Process Branch:art_52260f570b9a7d7a13000001: "fdafs"
+2013-09-10T10:00:23.244Z - [35msilly[39m: Process Branch:cat_5224ad56c61db2f404000004: {}
+2013-09-10T10:00:23.245Z - [35msilly[39m: Branch structure:{}
+{ email: 'test@test.com', password: 'test' }
+{ email: 'test@test.com', password: 'test' }
+2013-09-10T11:08:20.516Z - [35msilly[39m: Branch structure:{"cat_5224ae8ec61db2f404000006":{"art_522891efd878b23406000002":"mydemoshop","art_52289284d878b23406000003":"shop1","art_5229b3bb91df2e1402000001":"mynewhtml","art_5229b54e91df2e1402000003":"shop12","art_5229df7791df2e1402000004":"mytestArticle","art_5224ad81c61db2f404000005":"AppInfo","art_5224b6f4c61db2f404000009":"fdsafs","art_522db0089f87bc1f05000001":"kidskindom","cat_521f76cf4597bd6cfa81ad75":{"art_5224ad81c61db2f404000005":"AppInfo","art_5224b6f4c61db2f404000009":"fdsafs","art_52260f570b9a7d7a13000001":"fdafs"}},"cat_5224ad56c61db2f404000004":{}}
+2013-09-10T11:08:20.516Z - [35msilly[39m: Process Branch:cat_5224ae8ec61db2f404000006: {"art_522891efd878b23406000002":"mydemoshop","art_52289284d878b23406000003":"shop1","art_5229b3bb91df2e1402000001":"mynewhtml","art_5229b54e91df2e1402000003":"shop12","art_5229df7791df2e1402000004":"mytestArticle","art_5224ad81c61db2f404000005":"AppInfo","art_5224b6f4c61db2f404000009":"fdsafs","art_522db0089f87bc1f05000001":"kidskindom","cat_521f76cf4597bd6cfa81ad75":{"art_5224ad81c61db2f404000005":"AppInfo","art_5224b6f4c61db2f404000009":"fdsafs","art_52260f570b9a7d7a13000001":"fdafs"}}
+2013-09-10T11:08:20.516Z - [35msilly[39m: Branch structure:{"art_522891efd878b23406000002":"mydemoshop","art_52289284d878b23406000003":"shop1","art_5229b3bb91df2e1402000001":"mynewhtml","art_5229b54e91df2e1402000003":"shop12","art_5229df7791df2e1402000004":"mytestArticle","art_5224ad81c61db2f404000005":"AppInfo","art_5224b6f4c61db2f404000009":"fdsafs","art_522db0089f87bc1f05000001":"kidskindom","cat_521f76cf4597bd6cfa81ad75":{"art_5224ad81c61db2f404000005":"AppInfo","art_5224b6f4c61db2f404000009":"fdsafs","art_52260f570b9a7d7a13000001":"fdafs"}}
+2013-09-10T11:08:20.516Z - [35msilly[39m: Process Branch:art_522891efd878b23406000002: "mydemoshop"
+2013-09-10T11:08:20.517Z - [35msilly[39m: Process Branch:art_52289284d878b23406000003: "shop1"
+2013-09-10T11:08:20.517Z - [35msilly[39m: Process Branch:art_5229b3bb91df2e1402000001: "mynewhtml"
+2013-09-10T11:08:20.518Z - [35msilly[39m: Process Branch:art_5229b54e91df2e1402000003: "shop12"
+2013-09-10T11:08:20.519Z - [35msilly[39m: Process Branch:art_5229df7791df2e1402000004: "mytestArticle"
+2013-09-10T11:08:20.520Z - [35msilly[39m: Process Branch:art_5224ad81c61db2f404000005: "AppInfo"
+2013-09-10T11:08:20.520Z - [35msilly[39m: Process Branch:art_5224b6f4c61db2f404000009: "fdsafs"
+2013-09-10T11:08:20.520Z - [35msilly[39m: Process Branch:art_522db0089f87bc1f05000001: "kidskindom"
+2013-09-10T11:08:20.521Z - [35msilly[39m: Process Branch:cat_521f76cf4597bd6cfa81ad75: {"art_5224ad81c61db2f404000005":"AppInfo","art_5224b6f4c61db2f404000009":"fdsafs","art_52260f570b9a7d7a13000001":"fdafs"}
+2013-09-10T11:08:20.521Z - [35msilly[39m: Branch structure:{"art_5224ad81c61db2f404000005":"AppInfo","art_5224b6f4c61db2f404000009":"fdsafs","art_52260f570b9a7d7a13000001":"fdafs"}
+2013-09-10T11:08:20.521Z - [35msilly[39m: Process Branch:art_5224ad81c61db2f404000005: "AppInfo"
+2013-09-10T11:08:20.522Z - [35msilly[39m: Process Branch:art_5224b6f4c61db2f404000009: "fdsafs"
+2013-09-10T11:08:20.522Z - [35msilly[39m: Process Branch:art_52260f570b9a7d7a13000001: "fdafs"
+2013-09-10T11:08:20.523Z - [35msilly[39m: Process Branch:cat_5224ad56c61db2f404000004: {}
+2013-09-10T11:08:20.523Z - [35msilly[39m: Branch structure:{}
+{ email: 'test@test.com', password: 'test' }

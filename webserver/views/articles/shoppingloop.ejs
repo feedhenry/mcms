@@ -1,0 +1,44 @@
+<% layout ("../layouts/logged_in_layout.ejs") %>
+<script type="text/javascript">
+    $(function(){
+        $("#addAirlineBtn").click(function(){
+            $("#"+tb_airline).append()
+        });
+    });
+</script>
+<div class="page-header">
+    <h2>Shopping Loop</h2>
+    <form
+        action="/cms/articles/save/<%= cat%>/<%= type%>/<%= template%>"
+        method="post"
+    >
+        <table class="table table-hover table-stripe" id="tb_airline">
+            <tr>
+                <th>Image</th>
+                <th>Title</th>
+                <th>URL</th>
+                <th></th>
+            </tr>
+            <%
+                for (var ts in content){
+                    var data=content[ts];
+                    %>
+                    <tr>
+                        <td style="vertical-align:middle;"><img src='<%= data.encodedImage%>'/></td>
+                        <td style="vertical-align:middle;"><%= data.title%></td>
+                        <td style="vertical-align:middle;"><%= data.remoteUrl%></td>
+                        <td style="vertical-align:middle;"><a href="/cms/articles/delete/<%= cat%>/<%= type%>/<%= template%>/<%= ts%>" class="btn btn-danger">Delete</a></td>
+                    </tr>
+                    <%
+                }
+            %>
+            <tr id="newAirlineForm">
+                <td><input class="form-control" type="text" placeholder="Image URL" name="imageUrl"/></td>
+                <td><input class="form-control" type="text" placeholder=" Title" name="title"/></td>
+                <td><input class="form-control" type="text" placeholder="Web URL" name="remoteUrl"/></td>
+                <td></td>
+            </tr>
+        </table>
+        <button class="btn btn-primary" >Add</button>
+    </form>
+</div>

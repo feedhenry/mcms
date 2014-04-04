@@ -1,0 +1,34 @@
+<% layout("../layouts/logged_in_layout") -%>
+<link rel="stylesheet" type="text/css" href="/css/dashboard.css"/>
+<h2><%= title %></h2>   
+<h5>Please choose one to start</h5>
+<div class="clearfix">
+<div id="dashboard_panel">
+    <ul class="list-group">
+        <li data-panelid="intro_users" class="list-group-item"><a id="dashboard_button_users" href="/cms/users"><span class="glyphicon glyphicon-user" style="margin-right:10px"></span>Users</a></li>
+        <li data-panelid="intro_apps" class="list-group-item"><a id="dashboard_button_apps" href="/cms/apps"><span class="glyphicon glyphicon-phone" style="margin-right:10px"></span>Apps</a></li>
+    <li data-panelid="intro_categories" class="list-group-item"><a id="dashboard_button_categories" href="/cms/categories"><span class="glyphicon glyphicon-folder-open" style="margin-right:10px"></span>Categories</a></li>
+    <li data-panelid="intro_articles" class="list-group-item"><a id="dashboard_button_articles" href="/cms/articles"><span class="glyphicon glyphicon-file" style="margin-right:10px"></span>Articles</a></li>
+    
+    </ul>
+    
+</div>
+
+<div  id="intro">
+    <div class="panel panel-primary show" id="intro_users"><%- partial("./intro_user.html") %></div>
+    <div class="panel panel-primary" id="intro_categories"><%- partial("./intro_categories.html") %></div>
+    <div class="panel panel-primary" id="intro_articles"><%- partial("./intro_articles.html") %></div>
+    <div class="panel panel-primary" id="intro_apps"><%- partial("./intro_apps.html") %></div>
+</div>
+</div>
+
+<script>
+$(function(){
+    $("#dashboard_panel li").on("mouseover",function(){
+        $("#dashboard_panel li").removeClass("active");
+        $(this).addClass("active");
+        $("#intro div.show").removeClass("show");
+        $("#intro #"+$(this).data().panelid).addClass("show");
+    });
+});
+</script>

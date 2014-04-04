@@ -1,0 +1,28 @@
+<% layout("../layouts/logged_in_layout") -%>
+<link rel="stylesheet" type="text/css" href="/css/content_pre.css"/>
+<script>
+$(function(){
+    $(".content_type_list li").click(function(){
+        $(".content_type_list li.selected").removeClass("selected");
+        $(this).addClass("selected");
+        var data=$(this).data();
+        var type=data.type;
+        $(".jumbotron.show").removeClass("show");
+        $("#"+type).addClass("show");
+    });
+
+});
+</script>
+<div class="page-header">
+    <h2>Choose Content Type</h2>
+</div>
+<div class="clearfix">
+    <div class="pull-left clearfix" id="type-container">
+        <%- partial ("./contentTypes/content_core_type.html") %>
+        <%- partial ("./contentTypes/content_template_type.html") %>
+    </div>
+    <div class="pull-right" id="description">
+        <%- partial ("./contentTypes/content_core_intro.html") %>
+        <%- partial ("./contentTypes/content_template_intro.html") %>
+    </div>
+</div>

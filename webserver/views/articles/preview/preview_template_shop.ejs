@@ -1,0 +1,22 @@
+<script type="text/javascript" src="/share/templateProcess/shop.js"></script>
+<script>
+var lastHtml=null
+    preview.attachOnPreview(function(){
+        var alias=$("input[name='name']").val();
+        var imgSrc=$("input[name='image']").val();
+        var phone=$("input[name='phone']").val();
+        var openHours=$("input[name='openhours']").val();
+        var webUrl=$("input[name='weburl']").val();
+        var introduction=$("textarea").val();
+        //var introduction=tinyMCE.activeEditor.getContent({format : 'raw'});
+        
+        var html=processShopTemplate(imgSrc,introduction,phone,alias,openHours,webUrl);
+        if (lastHtml!=html){
+            $("#preview_iframe").contents().find("body").html(html);    
+            lastHtml=html;
+        }
+    });
+</script>
+<iframe id="preview_iframe">
+    
+</iframe>

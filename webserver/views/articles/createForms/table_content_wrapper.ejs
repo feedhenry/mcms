@@ -1,0 +1,271 @@
+<script>
+$(document).on("click",".delte_content",function(){
+    var ts=$(this).data().ts;
+    $("#rct").val(ts);
+    $("#article_create_form").submit();
+});
+$(document).on("click",".edit_content",function(){
+    // debugger;
+    var ts=$(this).data().ts;
+    var curTr=$(this).parents("tr");
+    editRow(curTr);
+    showBtnGroup("editContent",ts);
+
+});
+$(document).on("click",".edit_cancel",function(){
+    cancelEditRow();
+    // var ts=$(this).data().ts;
+    // // var mainObj=$(this).parents("td").find(".btnGroup.main");
+    // // showBtnGroup(mainObj,ts);
+});
+$(document).on("click",".edit_content_ok",function(){
+    var ts=$(this).data().ts;
+    $("#ect").val(ts);
+    $("#article_create_form").submit();
+});
+$(document).on("click", ".formattedTextEditorBtn", function() {
+    var data = $(this).data();
+    var fieldName = data.inputname;
+    var htmlContent = $("input[name=\"" + fieldName + "\"]").val();
+    $("#myModal").modal();
+    tinyMCE.get("richTextEditor").setContent("");
+    tinyMCE.get("richTextEditor").setContent(htmlContent);
+    $('#myModal').off('saveContent');
+    $('#myModal').on('saveContent', function(e, content) {
+        $("input[name=\"" + fieldName + "\"]").val(content);
+    });
+});
+$(document).on("click","#add_content_btn", function() {
+    $("#ac").val(true);
+    $("#article_create_form").submit();
+});
+
+$(document).on("click",".saveFormattedText", function() {
+    var content = tinyMCE.get("richTextEditor").getContent({
+        format: 'raw'
+    });
+    $("#myModal").trigger("saveContent", content);
+    $("#myModal").modal("hide");
+});
+$(document).on("click",".preview_content",function(){
+    var tr=$(this).parents("tr");
+    var obj=trToObj(tr);
+    location.hash="";
+    location.hash="#table_preview";
+    renderPreview(obj);
+
+});
+$(document).on("click",".imgPreview", function() {
+    window.open($(this).attr("src"));
+});
+$(document).on("click",".htmlPreview", function() {
+    var html = $(this).parent().children("input").val();
+    var iFrame = document.createElement("iframe");
+    iFrame.frameBorder = 0;
+    iFrame.width = "100%";
+    iFrame.height = "600";
+    $("#previewHtml").empty();
+    $("#previewHtml").append(iFrame);
+    iFrame.contentDocument.querySelector("body").innerHTML = html;
+    $("#htmlPreviewModal").modal();
+});
+
+
+var tmpTr=null;
+var lastTr=null;
+var curTable=null;
+function trToObj(trObj){
+    var table=trObj.parents("table");
+    var ths=table.find("tr th");
+    var tds=trObj.find("td");
+    var obj={}
+    for (var i=0;i<tds.length;i++){
+        if ($(tds[i]).hasClass("btnTr")){
+            continue;
+        }
+        var val=$(tds[i]).find("input").val();
+        var key=$(ths[i]).text();
+        obj[key]=val;
+    }
+    return obj;
+}
+function editRow(trObj){
+    if (tmpTr!=null){
+        cancelEditRow();
+    }
+    curTable=trObj.parents("table");
+    lastTr=curTable.find("tr.editTr");
+    var lastTrClone=lastTr.clone(true);
+    var tds=trObj.children("td");
+    var mappedTds=lastTrClone.children("td");
+    trObj.addClass("editing");
+    tmpTr=trObj.clone(true);
+    for (var i=0;i<tds.length;i++){
+        var td=$(tds[i]);
+        if (td.hasClass("btnTr")){
+            continue;
+        }
+        var val=td.children("input").val();
+        $(mappedTds[i]).children("input,select,textarea").val(val);
+        td.replaceWith(mappedTds[i]);
+    }
+    lastTr.detach();
+}
+
+function cancelEditRow(){
+    var curEditTr=curTable.find("tr.editing");
+    curEditTr.replaceWith(tmpTr);
+
+    tmpTr=null;
+    curTable.append(lastTr);
+    curTable.find("tr.editing").removeClass("editing");
+    curTable=null;
+}
+</script>
+<script type="text/javascript">
+    tinymce.init({
+        height:400,
+        menubar:"edit insert view format table tools",
+        visual:false,
+        selector: "#richTextEditor",
+        plugins: [
+            "advlist anchor autolink charmap code contextmenu fullpage fullscreen hr image insertdatetime lists link media paste preview searchreplace table textcolor visualblocks"
+        ],
+        image_advtab: true,
+        // toolbar: "undo redo | fontselect fontsizeselect styleselect forecolor backcolor | bold italic underline | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image anchor | fullpage",
+        image_list:[{
+            "title":"ky",
+            "value":"http://keyangxiang.com/index.html"
+        }],
+         // menubar:false,
+         toolbar:false
+    });
+</script>
+<style>
+#table_content{
+    min-width: 800px;
+    max-width: 100%;
+    overflow-x: auto;
+}
+#table_content th{
+    white-space:nowrap; 
+    text-overflow:ellipsis;
+    max-width:200px;
+    overflow: hidden;
+}
+#table_content td{
+    white-space:nowrap; 
+    text-overflow:ellipsis;
+    max-width:155px;
+    overflow: hidden;
+}
+
+.imgPreview{
+    cursor: pointer;
+}
+.htmlPreview{
+    text-decoration: underline;
+}
+</style>
+
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title" id="myModalLabel">Rich Text Editor</h4>
+      </div>
+      <div class="modal-body">
+        <div id="richTextEditor">
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary saveFormattedText">Save changes</button>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+<div class="modal fade" id="htmlPreviewModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title" id="myModalLabel">Html Preview</h4>
+      </div>
+      <div class="modal-body" id="previewHtml">
+        
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+<div id="table_content" style="min-width:800px">
+    <h3>Table Content</h3>
+            <%
+            if (article && article.tableMeta){%>
+            <table data-type="content" class="table table-hover" id="contentTable">
+                <tr>
+                    <% 
+                    var fields=[];
+                    for (var key in article.tableMeta) {
+                            var item=article.tableMeta[key];
+                            fields.push(item);
+                        %>
+                        <th><%= item.props.name%></th>
+                    <% } %>
+                    <th></th>
+                </tr>
+                <%
+                    var content=article.content;
+
+                    for (var ts in content){
+                        var obj=content[ts];
+                        %>
+                        <tr>
+                            <% 
+                                fields.forEach(function(item){
+                                    var name=item.props.name;
+                                    var val=obj[name]?obj[name]:"";
+                                    var htmlCode=item.getHtmlPreview(val);
+                                    %>
+                                    <td>
+                                        <input type="hidden" value="<%= val %>"/>
+                                        <%-  htmlCode%>
+                                    </td>
+                                    <%
+                                });%>
+                                <td class="btnTr">
+                                    <div class="btnGroup main active"  data-ts="<%= ts%>">
+                                        <button data-ts="<%= ts%>" class="btn btn-primary btn-xs preview_content" type="button">Preview</button>
+                                        <button data-ts="<%= ts%>" class="btn btn-primary btn-xs edit_content" type="button">Edit</button><button data-ts="<%= ts%>" class="btn btn-danger btn-xs delte_content" type="button" style="margin-left:10px">Delete</button>
+                                        
+                                    </div>
+                                    <div class="btnGroup editContent" data-ts="<%= ts%>">
+                                        <button data-ts="<%= ts%>" class="btn btn-primary btn-xs edit_content_ok" type="button">Save</button><button data-ts="<%= ts%>" class="btn btn-primary btn-xs edit_cancel" type="button">Cancel</button>
+                                    </div>
+                                </td>
+                        </tr>
+                        <%
+
+                    }
+
+                %>
+                <tr class="editTr">
+                    <% 
+                        fields.forEach(function(item){
+                            %>
+                            <td><%- item.getHtml() %></td>
+                            <%
+                        });
+                    %>
+                    <td><button type="button" class="btn btn-primary btn-xs" id="add_content_btn">Add</button></td>
+                </tr>
+
+            </table>
+            <% } %>
+        </div>

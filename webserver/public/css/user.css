@@ -1,0 +1,14 @@
+#auth_method_list{
+    margin-right:20px;
+    padding-right:20px;
+    border-right:1px solid #ccc;
+}
+
+#intro_am>p{
+    display: none;
+ 
+}
+
+#intro_am>p.show{
+    display: block;
+}

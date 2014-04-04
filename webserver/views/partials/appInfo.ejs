@@ -1,0 +1,14 @@
+
+<h3>Application Information</h3>
+<div class="form-group">
+    <button class="btn btn-primary editAppItem" data-alias="<%=application.alias %>" data-id="<%=application._id %>">Edit</button>
+    <button class="btn btn-primary deleteAppItem" data-alias="<%=application.alias %>" data-id="<%=application._id %>">Delete</button>
+    <button class="btn btn-primary attachAppCategory" data-alias="<%=application.alias %>" data-id="<%=application._id %>">Attach Category</button>
+</div>
+<table class="table">
+    <tr><th style="text-align:right">Application Name</th><td><%=application.name %></td></tr>
+    <tr><th style="text-align:right">Application Alias</th><td><%=application.alias %></td></tr>
+    <tr><th style="text-align:right">Published</th><td><%=application.publish %></td></tr>
+    <tr><th style="text-align:right">id</th><td><%=application._id %></td></tr>
+
+</table>

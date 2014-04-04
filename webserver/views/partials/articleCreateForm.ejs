@@ -1,0 +1,32 @@
+
+<h2>Attach Content</h2>
+<p>Choose content items from the list</p>
+<div>
+    <label for="select_article">Content</label>
+     <table class="table table-hover">
+        <tr><th></th><th>Name</th><th>Alias</th><th>Type</th><th>Edit</th></tr>
+        <% articles.forEach(function(article) { %>
+        <tr>
+            <td>
+                <label>
+                <input type="checkbox" value="<%- article.alias %>" data-alias="<%= article.alias %>" data-id="<%= article._id %>" data-rel="article" data-name="<%= article.name %>" data-version="<%= article.version %>" class="articleItem"/></label>
+            </td>
+            <td><%= article.name %></td>
+            <td><%= article.alias %></td>
+            <td><%= article.type %></td>
+            <td><a href="/cms/#">Edit</a></td>
+        </tr>
+        <% }) %>
+     </table>
+</div>
+<div class="form-group">
+    <button type="button" id="attach_article" class="btn btn-primary">Ok</button><span> OR </span>
+    <a href="/cms/articles/create"  class="btn btn-primary">Create new content</a>
+</div>
+<!--  <fieldset>
+    <p>Or, add a new article</p>
+</fieldset>
+<%- partial("../partials/articleFormFields") %>
+<fieldset>
+     <button type="submit">Save</button>
+</fieldset> -->

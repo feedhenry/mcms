@@ -1,0 +1,30 @@
+<% layout("../layouts/logged_in_layout") -%>
+<div class="page-header">
+<h2><%= title %></h2>
+</div>
+<p><a href="/cms/categories/create" class="btn btn-primary">New Category</a></p>
+<table class="table table-hover table-striped">
+    <tr>
+        <th>Name</th>
+        <th>Alias</th>
+        <th>Version</th>
+        <th>Published</th>
+        <th>Delete</th>
+    </tr>
+    <% categories.forEach(function(category) { %>
+            <tr id="<%- category.alias %>">
+                <td><a href="/cms/categories/<%- category.alias %>"><%- category.name %></a></td>
+                <td><%- category.alias %></td>
+                <td><%- category.version %></td>
+                <td><%- category.publish %></td>
+                <td>
+                    <form
+                        action="/cms/categories/<%- category._id %>/delete"
+                        method="post"
+                        onsubmit="return confirm('Do you really want to delete this category?');" >
+                        <button type="submit" class="btn btn-danger btn-xs">Delete</button>
+                    </form>
+                </td> 
+            </tr>
+    <% }); %> 
+</table>

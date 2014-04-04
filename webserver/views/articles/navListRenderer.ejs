@@ -1,0 +1,76 @@
+<% layout("../layouts/logged_in_layout") -%>
+<style>
+.leftCol{
+  float:left;
+
+}
+.leftCol ul{
+  margin: 0;
+  padding: 0px;
+  list-style: none;
+}
+.leftCol ul li{
+  padding:10px;
+  cursor: pointer;
+  font-weight:bold;
+  font-size: 1.1em;
+}
+.leftCol ul li:hover{
+  background: #efefef;
+}
+.rightCol{
+  margin-left:200px;
+}
+.rightCol .panel{
+  padding:20px;
+}
+</style>
+<div class="panel panel-primary">
+  <div class="panel-heading">
+    <h3 class="panel-title">Table</h3>
+  </div>
+  <div class="panel-body ">
+    <div class="leftCol">
+      <ul data-spy="affix" data-offset-top="200" style="top:0" >
+        <li data-panelid="basic"><a href="#basic">Basic Config</a></li>
+        <%
+          if (typeof navList !="undefined"){
+            for (var i=0;i<navList.length;i++){
+              var nav=navList[i];
+              %>
+                <li><a href="#<%= nav.id %>"><%= nav.name %></a></li>
+              <%
+            }
+          }else{
+            navList=[];
+          }
+        %>
+      </ul>
+    </div>
+    <div class="rightCol">
+      <form id="article_create_form"
+        action="/cms/articles/save/<%= cat%>/<%= type%>/<%= template%>"
+        method="post"
+        enctype="multipart/form-data">
+        <input type="hidden" name="cat" value="<%= cat%>" />
+        <input type="hidden" name="type" value="<%= type%>" />
+        <input type="hidden" name="template" value="<%= template%>" />
+        <input type="hidden" name="_id" value="<%= _id%>"/> 
+        <div class="panel panel-default" id="basic">
+          <%- partial("../partials/articleFormFields") %>
+          <input type="submit" class="btn btn-primary"/>
+        </div>
+        <%
+          for (var i=0;i<navList.length;i++){
+            var nav=navList[i];
+            %>
+              <div class="panel panel-default" id="<%= nav.id%>">
+                  <%- partial("./createForms/"+nav.id) %>
+              </div>
+            <%
+          }
+        %>
+      </form>
+    </div>
+  </div>
+</div>

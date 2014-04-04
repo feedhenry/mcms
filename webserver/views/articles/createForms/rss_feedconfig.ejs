@@ -1,0 +1,17 @@
+<script type="text/javascript">
+  $(document).on("click",".saveAndPullBtn",function(){
+    $("#pullRssInput").val(true);
+    $("#article_create_form").submit();
+  });
+</script>
+<div class="form-group">
+        <label>RSS Feed URL</label>
+        <input type="text" name="url" class="form-control" id="weburl" value="<%= ((typeof article != 'undefined') && (article.url != null)) ? article.url : ''%> "/>
+  </div>
+  <div class="checkbox">
+    <label>
+      <input type="checkbox" name="autoUpdate" <%=((typeof article != 'undefined') && (article.autoUpdate)) ? "checked" : '' %>> Auto Update
+    </label>
+  </div>
+  <input type="hidden" name="pullRss" id="pullRssInput"/>
+  <button type="button" class="btn btn-primary saveAndPullBtn">Save &amp; Pull</buttom>

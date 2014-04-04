@@ -1,0 +1,7 @@
+<form id="category_edit_form">
+    <h2>Edit Category</h2>
+    <%- partial("../partials/categoryFormFields") %>
+    <fieldset>
+         <button type="button" id="category_edit_form_save_btn" data-alias="<%= (typeof category != 'undefined') ? category.alias : '' %>">Save</button>
+    </fieldset>
+</form>

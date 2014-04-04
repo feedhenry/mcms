@@ -1,0 +1,46 @@
+<script type="text/javascript">
+  var rssTemplates={
+    "basic":{
+      "html":'<!DOCTYPE html><html><head></head><body><h3>&lt;$=title$&gt;</h3><p style="text-align: right;"><strong><span style="color: #3366ff;">&lt;$=pubDate$&gt;</span></strong></p><p>&lt;$=description$&gt;</p></body></html>'
+    },
+    "red_header":{
+      "html":'<!DOCTYPE html><html><head></head><body><h2><span style="color: #ff0000;">&lt;$=title$&gt;</span></h2><p style="text-align: right;"><strong><span style="color: #3366ff;">&lt;$=pubDate$&gt;</span></strong></p><p>&lt;$=description$&gt;</p></body></html>'
+    }
+  }
+  $(function(){
+    setDefaultHtml(rssTemplates["basic"].html);
+    $("#rssPreviewTemplateList").on("change",function(){
+      var val=$(this).val();
+      var html=rssTemplates[val].html;
+      setTemplateHtml(html);
+    });
+  });
+  
+</script>
+<h3>Preview Template</h3>
+
+<p>
+  Edit your template with visual editor or editing the HTML code directly in Tools->Source Code. 
+</p>
+<p>
+  Injectable variables from a feed:
+  <ul>
+    <li>&lt;$=title$&gt;</li>
+    <li>&lt;$=description$&gt;</li>
+    <li>&lt;$=summary$&gt;</li>
+    <li>&lt;$=pubDate$&gt;</li>
+    <li>&lt;$=link$&gt;</li>
+  </ul>
+  <b>There could be much more injectable variables from a feed like images if possible. Refer RSS feed definition.</b>
+</p>
+<p>
+  For example, HTML code: &lt;b&gt;&lt;$=title$&gt;&lt;/b&gt; will result in a bold title value from a feed.
+</p>
+<div class="form-group" style="margin-bottom:10px;width:300px">
+  <label>RSS Preview Templates</label>
+  <select class="form-control" id="rssPreviewTemplateList">
+    <option value="basic">Basic</option>
+    <option value="red_header">Red Header</option>
+  </select>
+</div>
+<%- partial("./embed_preview_template.ejs") %>

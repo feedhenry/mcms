@@ -1,0 +1,59 @@
+<script type="text/javascript">
+    // tinymce.init({
+    //     height:600,
+    //     width:1000, 
+    //     menubar:"edit insert view format table tools",
+    //     visual:false,
+    //     selector: "textarea.editor",
+    //     plugins: [
+    //         "advlist anchor autolink charmap code contextmenu fullpage fullscreen hr image insertdatetime lists link media paste preview searchreplace table textcolor visualblocks"
+    //     ],
+    //     image_advtab: true,
+    //     toolbar: "undo redo | fontselect fontsizeselect styleselect forecolor backcolor | bold italic underline | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image anchor | fullpage",
+    //     image_list:[{
+    //         "title":"ky",
+    //         "value":"http://keyangxiang.com/index.html"
+    //     }]
+    // });
+    function setShopAndCollectVal(box, val) {
+        var input = $('input[name="shopandcollect"]');
+        var curVal = input.val();
+
+        if(val) {
+            input.val(false);
+        }
+        else if(curVal == "true") {
+            input.val(false);
+        } else {
+            input.val(true);
+        }
+    }
+</script>
+
+<div style="width:500px; ">
+  <div class="form-group">
+      <label for="name">Image</label>
+      <input class="form-control" name="image" type="text" placeholder="Image URL here" required value="<%= (typeof article != 'undefined') ? article.image : '' %>" />
+  </div>
+  <div class="form-group">
+      <label for="name">Open Hours</label>
+      <input class="form-control" name="openhours" type="text" placeholder="Mon-Fri 09:00-17:00" required value="<%= (typeof article != 'undefined') ? article.openhours : '' %>" />
+  </div>
+  <div class="form-group">
+      <label for="name">Web URL</label>
+      <input class="form-control" name="weburl" type="text" placeholder="http://weburl.com" required value="<%= (typeof article != 'undefined') ? article.weburl : '' %>" />
+  </div>
+  <div class="form-group">
+      <label for="name">Phone</label>
+      <input class="form-control" name="phone" type="text" placeholder="+353 878888888" required value="<%= (typeof article != 'undefined') ? article.phone : '' %>" />
+  </div>
+  <div class="form-group">
+      <label for="name">Supports Shop & Collect?</label>
+      <input class="form-control" type="checkbox" onclick="setShopAndCollectVal(this)" value="<%= (typeof article != 'undefined') ? article.shopandcollect : 'false' %>" <%= (typeof article != 'undefined' && article.shopandcollect=="true") ? 'checked' : '' %>/>
+      <input hidden="true" name="shopandcollect" value="<%= (typeof article != 'undefined') ? article.shopandcollect : 'false' %>">
+  </div>
+  <div class="form-group">
+    <label for="name">Introduction</label>
+    <textarea class="form-control" name="introduction"  rows="10"><%= (typeof article != 'undefined') ? article.introduction : '' %></textarea>
+</div> 
+</div>

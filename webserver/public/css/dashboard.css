@@ -1,0 +1,25 @@
+
+#dashboard_panel  {
+    float:left;
+    width: 300px;
+    margin-right: 10px;
+    
+}
+#dashboard_panel a{
+    font-size:1.2em;
+    font-weight:bold;
+    display: block;
+}
+
+#dashboard_panel li:hover {
+    background: #efefef;
+}
+#intro{
+    margin-left:320px;
+}
+#intro>div.panel{
+    display:none;
+}
+#intro>div.show{
+    display: block;
+}

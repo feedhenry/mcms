@@ -1,0 +1,43 @@
+<script>
+tinymce.init({
+        height:400,
+        menubar:"edit insert view format table tools",
+        visual:false,
+        selector: "#previewTemplate",
+        plugins: [
+            "advlist anchor autolink charmap code contextmenu fullpage fullscreen hr image insertdatetime lists link media paste preview searchreplace table textcolor visualblocks"
+        ],
+        image_advtab: true,
+        toolbar: "undo redo | fontselect fontsizeselect styleselect forecolor backcolor | bold italic underline | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image anchor | fullpage",
+        image_list:[{
+            "title":"ky",
+            "value":"http://keyangxiang.com/index.html"
+        }],
+         // menubar:false,
+         // toolbar:false
+    });
+$(document).on("click","button.submitPreview",function(){
+  var editor=tinymce.get("previewTemplate");
+  var html=editor.getContent({format : 'raw'});
+  $("#ept").val(true);
+  $("#article_create_form").submit();
+});
+function setTemplateHtml(html){
+  tinyMCE.get("previewTemplate").setContent(html);
+}
+function setDefaultHtml(html){
+  var textA=$("#previewTemplate");
+  if (textA.text()==""){
+    textA.text(html);
+  }
+}
+</script>
+<textarea placeholder="Add preview template code" name="previewTemplate" id="previewTemplate"><%
+  if (typeof article !="undefined" && article.previewTemplate){
+    %>
+      <%= article.previewTemplate %>
+    <%
+  }
+%></textarea>
+<input type="hidden" name="edit_preview_template" id="ept" />
+<button type="button" class="btn btn-primary submitPreview">Submit</button>

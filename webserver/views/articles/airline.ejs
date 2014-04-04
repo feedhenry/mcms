@@ -1,0 +1,47 @@
+<% layout ("../layouts/logged_in_layout.ejs") %>
+<script type="text/javascript">
+    $(function(){
+        $("#addAirlineBtn").click(function(){
+            $("#"+tb_airline).append()
+        });
+    });
+</script>
+<div class="page-header">
+    <h2>Airlines</h2>
+    <form
+        action="/cms/articles/save/<%= cat%>/<%= type%>/<%= template%>"
+        method="post"
+    >
+        <table class="table table-hover table-stripe" id="tb_airline">
+            <tr>
+                <th>Name</th>
+                <th>FIS Code</th>
+                <th>AOS Code</th>
+                <th>Icon</th>
+                <th></th>
+            </tr>
+            <%
+                for (var ts in content){
+                    var data=content[ts];
+                    %>
+                    <tr>
+                        <td style="vertical-align:middle;"><%= data.airline_name%></td>
+                        <td style="vertical-align:middle;"><%= data.fis_code%></td>
+                        <td style="vertical-align:middle;"><%= data.aos_code%></td>
+                        <td><img src="<%= data.iconData%>"  height="60"/></td>
+                        <td style="vertical-align:middle;"><a href="/cms/articles/delete/<%= cat%>/<%= type%>/<%= template%>/<%= ts%>" class="btn btn-danger">Delete</a></td>
+                    </tr>
+                    <%
+                }
+            %>
+            <tr id="newAirlineForm">
+                <td><input class="form-control" type="text" placeholder="Airline Name" name="airline_name"/></td>
+                <td><input class="form-control" type="text" placeholder="FIS Code" name="fis_code"/></td>
+                <td><input class="form-control" type="text" placeholder="AOS Code" name="aos_code"/></td>
+                <td><input class="form-control" type="text" placeholder="Icon URL" name="icon_url"/></td>
+                <td></td>
+            </tr>
+        </table>
+        <button class="btn btn-primary" >Add</button>
+    </form>
+</div>

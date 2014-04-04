@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>
+      <% if (typeof title =="undefined"){%>
+          DAA Mobile CMS
+        <% } else{ %>
+      <%= title %>
+      <% } %></title>
+    <link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css"/>
+    <script src="/js/jquery.js"></script>
+    <script src="/js/tinymce/js/tinymce/tinymce.min.js"></script>
+    <script src="/js/jstree-v.pre1.0/jquery.jstree.js"></script>
+    <script src="/js/general.js"></script>
+    <script src="/js/jquery.validate.min.js"></script>
+    <script src="/js/daaClientMimic.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
+    <%- scripts %>
+        
+    <link rel="stylesheet" href="/css/general.css">
+    <%- stylesheets %>
+  </head>
+  <body>
+    <div id="header"><img src="<%= process.env.brandLogo?process.env.brandLogo : "http://www.feedhenry.com/wp-content/uploads/2013/08/fh-top-logo-sm.png" %>"/><span style="margin-left:20px;vertical-align:middle">Content Management System</span><small style="vertical-align:middle">for mobile</small></div>
+    <section id="mainBody">
+      <% 
+      if (typeof sessionUser!="undefined") {%>
+        <%- partial("../partials/navigation") %>
+      <% } %>
+      <div id="content_container">
+        <%- body %>
+      </div>
+    </section>
+    <footer>
+        <p>DAA CMS</p>
+    </footer>
+  </body>
+</html>

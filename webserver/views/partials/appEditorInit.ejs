@@ -1,0 +1,74 @@
+<style type="text/css">
+  .section{
+    display: none;
+  }
+  .section.active{
+    display: block;
+  }
+</style>
+
+<div class="jumbotron section active">
+    <div class="container">
+        <h2>App Management</h2>
+        <p>Manage your mobile application content structure here. The structure will be sent to mobile application client.</p>
+        <p>Choose an application from tree view on the left to start or you can <button class="btn btn-primary app_index_create_btn">Create New App</button>
+  </div>
+</div>
+<!-- App Info Section -->
+<div  class="section app">
+  <h3>Application Information</h3>
+  <div class="form-group">
+      <button class="btn btn-primary editItem">Edit</button>
+      <button class="btn btn-primary deleteItem">Delete</button>
+      <button class="btn btn-primary attachCategory">Attach Category</button>
+  </div>
+  <table class="table">
+      <tr><th style="text-align:right">Application Name</th><td class="name"></td></tr>
+      <tr><th style="text-align:right">Application Alias</th><td class="alias"></td></tr>
+      <tr><th style="text-align:right">id</th><td class="id"></td></tr>
+  </table>
+</div>
+
+<!-- Category Info Section -->
+<div class="section category">
+  <h3>Category Information</h3>
+  <div class="form-group">
+      <button class="btn btn-primary editItem" >Edit</button>
+      <button class="btn btn-primary deleteItem" >Delete</button>
+      <button class="btn btn-primary attachCategory" >Attach Category</button>
+      <button class="btn btn-primary attachArticle" >Attach Article</button>
+      <button class="btn btn-primary" id="inc-rank-btn" >Increase Rank</button>
+      <button class="btn btn-primary" id="dec-rank-btn" >Decrease Rank</button>
+      <button style="display:none;" class="btn btn-warning updateTree" >Save Order</button>
+  </div>
+  <table class="table">
+      <tr><th style="text-align:right">Category Name</th><td class="name"></td></tr>
+      <tr><th style="text-align:right">Category Alias</th><td class="alias"></td></tr>
+      <tr><th style="text-align:right">Rank</th><td class="rank"></td></tr>
+      <tr><th style="text-align:right">id</th><td class="id"></td></tr>
+      <tr><th style="text-align:right">Version</th><td class="version"></td></tr>
+  </table>
+</div>
+
+<!-- Article Info Section -->
+<div class="section article">
+  <h3>Content Information</h3>
+  <div class="form-group">
+      <a class="btn btn-primary editContentBtn" href="">Edit</a>
+      <button class="btn btn-primary deleteItem" >Detach Content</button>
+      <button class="btn btn-primary" id="inc-rank-btn" >Increase Rank</button>
+      <button class="btn btn-primary" id="dec-rank-btn" >Decrease Rank</button>
+      <button style="display:none;" class="btn btn-warning updateTree" >Save Order</button>
+  </div>
+  <table class="table">
+      <tr><th style="text-align:right">Content Name</th><td class="name"></td></tr>
+      <tr><th style="text-align:right">Content Alias</th><td class="alias"></td></tr>
+      <tr><th style="text-align:right">Rank</th><td class="rank"></td></tr>
+      <tr><th style="text-align:right">id</th><td class="id"></td></tr>
+  </table>
+</div>
+
+<!-- Dynamic Info Section -->
+<div class="section dynamic">
+
+</div>

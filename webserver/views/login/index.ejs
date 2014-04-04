@@ -1,0 +1,20 @@
+<%- layout("/layouts/logged_in_layout.ejs")%>
+<form id="login_form"
+    class="full_form"
+    action="/cms/saveSession"
+    method="post" role="form">
+    <div class="form_panel">
+        <h2>Please log in</h2>
+        <div class="form-group">
+            <label for="email">Email</label>
+            <input placeholder="Email" class="form-control" name="email" type="text" required />
+        </div class="form-group">
+        <div class="form-group">
+            <label for="password">Password</label>
+            <input placeholder="Password" class="form-control" name="password" type="password" required />
+        </div class="form-group">
+        <div class="form-group clearfix">
+             <button type="submit" class="btn btn-default pull-right">Login</button>
+        </div class="form-group">
+    </div>
+</form>

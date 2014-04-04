@@ -1,0 +1,13 @@
+<% layout("../layouts/logged_in_layout") -%>
+
+<form id="article_edit_form"
+    action="/cms/articles/<%= article.alias %>/save"
+    method="post">
+    <div class="form_panel">
+        <h2><%= title %></h2>
+        <%- partial("../partials/articleFormFields") %>
+        <fieldset>
+             <button type="submit">Save</button>
+        </fieldset>
+    </div>
+</form>

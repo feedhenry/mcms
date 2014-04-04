@@ -1,0 +1,29 @@
+<h3>PDF File</h3>
+<div id="uploadForm">
+  <div class="form-group" >
+      <label for="exampleInputFile">File input</label>
+      <input type="file" id="file" name="file" accept=".pdf" />
+      <p class="help-block">Choose a pdf file from your computer.</p>
+    </div>
+  <button class="btn btn-primary">Submit</button>
+</div>
+<%
+  if (typeof article!="undefined" &&  article.fileName){
+    %>
+    <div id="fileUploaded">
+        <table class="table">
+            <tr><th>File Name</th><td><%= article.fileName%></td></tr>
+            <tr><th>File Hash Name</th><td><%= article.fileHashName%></td></tr>
+            <tr><th>File Size</th><td><%= article.fileSize%></td></tr>
+        </table>
+        <a href="/download/<%= article.fileHashName%>" class="btn btn-primary" target="_blank">Preview</a>
+        <button type="button" id="switch_upload" class="btn btn-primary">Change</button>
+    </div>
+    <script type="text/javascript">
+      $("#uploadForm").hide();
+      $("#switch_upload").on("click",function(){
+        $("#uploadForm").show();
+        $("#fileUploaded").hide();
+      });
+    </script>
+<% } %>

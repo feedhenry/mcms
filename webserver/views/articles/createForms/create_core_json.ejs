@@ -1,0 +1,18 @@
+<script>
+$(function(){
+    $("#article_create_form").on("submit",function(){
+        var data=$("#jsonEditor").val();
+        try{
+            JSON.parse(data);
+            return true;
+        }catch(e){
+            alert(e);
+            return false;
+        }
+    });
+});
+</script>
+<div class="form-group">
+<label>Content</label>
+    <textarea name="content" class="form-control" style="height:400px;" id="jsonEditor" placeholder="Copy and paste valid JSON string here..."><%= ((typeof article != 'undefined') && (article.content != null)) ? article.content : '' %></textarea>
+</div>
